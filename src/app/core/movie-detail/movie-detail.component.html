@@ -1,0 +1,35 @@
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-8">
+    <div class="d-flex justify-content-center align-items-center">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="!isLoading">
+  <div class="col-md-4 mb-5">
+    <img class="img-fluid custom-img-height"
+      [src]=imgBaseUrl+movie.poster_path alt="{{ movie.title }}">
+    <h1 class="card-title">{{movie.title}}</h1>
+  </div>
+
+
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h1>Overview:</h1>
+        <p class="card-text">{{movie.overview}}</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Adult:</strong> {{ movie.adult ? 'Yes' : 'No' }}</li>
+          <li class="list-group-item"><strong>Original Language:</strong> {{ movie.original_language }}</li>
+          <li class="list-group-item"><strong>Popularity:</strong> {{ movie.popularity }}</li>
+          <li class="list-group-item"><strong>Release Date:</strong> {{ movie.release_date }}</li>
+          <li class="list-group-item"><strong>Vote Average:</strong> {{ movie.vote_average }}</li>
+          <li class="list-group-item"><strong>Vote Count:</strong> {{ movie.vote_count }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

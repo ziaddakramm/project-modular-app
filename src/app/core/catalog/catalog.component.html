@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-10">
+        <button class="btn btn-dark previous" type="button" [disabled]="currentPageIndex==1" (click)="onPreviousPage()">previous
+            page</button>
+        |
+        <button class="btn btn-dark next" type="button" [disabled]="currentPageIndex==totalNumberOfPages"
+            (click)="onNextPage() ">next page</button>
+    </div>
+    <div class="col-md-2">
+        <p>page {{currentPageIndex}}/{{totalNumberOfPages}}</p>
+    </div>
+</div>
+
+<div class="row " *ngIf="isLoading">
+    <div class="col-md-6">
+        <div class="d-flex justify-content-center align-items-center">
+        <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!isLoading">
+    <div class="col-md-4 mb-3 " *ngFor="let movieElement of movies;let i = index;">
+        <app-movie class="movie" [movie]="movieElement" [index]="i">
+        </app-movie>
+    </div>
+</div>
