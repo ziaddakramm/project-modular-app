@@ -50,7 +50,6 @@ export class MoviesStorageService {
                 params:new HttpParams().set('api_key',this.apiKey)
             }
         ).pipe(
-
             map((response: any) => 
             {
                 let receivedMovie = new Movie(

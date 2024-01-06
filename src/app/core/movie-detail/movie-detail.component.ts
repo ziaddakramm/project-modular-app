@@ -21,7 +21,9 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
 
   isLoading = true;
 
-  imgBaseUrl=environment.imgBasePath;
+  imgBaseUrl = environment.imgBasePath;
+
+  invalidMovieId: boolean;
 
 
   constructor(private moviesStorageService: MoviesStorageService, private route: ActivatedRoute, private router: Router) { }
@@ -29,17 +31,21 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe(
       (params: Params) => {
-
-
+        this.invalidMovieId
         this.movieId = +params['id'];
-        this.movieSubscription = this.moviesStorageService.getMovieDetail(this.movieId).subscribe((movie) => {
-          this.movie = movie;
-          this.isLoading = false;
+        this.movieSubscription = this.moviesStorageService.getMovieDetail(this.movieId).subscribe({
+          next: (movie) => {
+            this.movie = movie;
+            this.isLoading = false;
+          },
+          error: () => {
+            this.invalidMovieId = true;
+            this.isLoading = false;
+          }
         });
+      },
 
 
-
-      }
     );
 
   }
