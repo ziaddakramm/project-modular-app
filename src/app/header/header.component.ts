@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth-service';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -12,6 +13,8 @@ export class HeaderComponent  {
 
   isAuthenticated=false;
   private userSubscription:Subscription;
+
+  title=environment.title;
 
 
   constructor(private authService:AuthService){}

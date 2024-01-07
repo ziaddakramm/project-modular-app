@@ -4,4 +4,5 @@ export const environment = {
     tmdbApiKey:'ac8505d478a5c429138f8613924550e3',
     tmdbMoviesApiUrl:'https://api.themoviedb.org/3/movie/top_rated?language=en-US',
     imgBasePath:'https://www.themoviedb.org/t/p/w220_and_h330_face',
+    title:'Top Rated Movies'
 };

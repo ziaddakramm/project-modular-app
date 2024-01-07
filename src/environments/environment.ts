@@ -4,4 +4,5 @@ export const environment = {
     tmdbApiKey:'',
     tmdbMoviesApiUrl:'',
     imgBasePath:'',
+    title:''
   };
