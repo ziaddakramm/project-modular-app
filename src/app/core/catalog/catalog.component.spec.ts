@@ -94,6 +94,9 @@ describe('CatalogComponent', () => {
         let movieElements=el.queryAll(By.css('.movie'));
 
         expect(movieElements.length).toBe(2);
+        expect(movieElements[0].componentInstance.index).toBe(0)
+        expect(movieElements[0].componentInstance.movie.original_title).toBe('The Shawshank Redemption')
+        expect(movieElements[1].componentInstance.movie.original_title).toBe('The Godfather')
     })
 
     it('should disable previous button if on first page',()=>{
