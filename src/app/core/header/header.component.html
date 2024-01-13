@@ -17,10 +17,12 @@
                         *ngIf="true" i18n="@@catalogText">Catalog</a>
                 </li>
 
-                <li class="nav-item me-auto">
+                <li class="nav-item">
                     <a class="nav-link" *ngIf="isAuthenticated" (click)="onLogout()"
                         i18n="@@LogoutText">Logout</a>
                 </li>
+
+                
             </ul>
         </div>
     </div>
