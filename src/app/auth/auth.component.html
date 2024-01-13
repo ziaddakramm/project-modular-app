@@ -47,7 +47,7 @@
             <div>
                 <button class="btn btn-dark" [disabled]="!authForm.valid" type="submit" i18n="@@LoginSignupText">{{isLoginMode ?'Log in' :'Sign up'}}</button>
                 | 
-                <button class="btn btn-dark" (click)="onSwitchMode()" type="button" i18n="@@AuthSwitchText">Switch to{{isLoginMode ?"Sign Up" :"Log in"}} </button>
+                <button class="btn btn-dark" (click)="onSwitchMode()" type="button" i18n="@@AuthSwitchText">Switch to {{isLoginMode ?"Sign Up" :"Log in"}} </button>
             </div>
         </form>
     </div>

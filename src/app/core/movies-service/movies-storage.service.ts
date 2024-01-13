@@ -45,7 +45,7 @@ export class MoviesStorageService {
 
     getMovieDetail(movieId:number) {
         return this.http.get<Movie>(
-            `https://api.themoviedb.org/3/movie/${movieId}`,
+            environment.tmdbMovieDetailUrl+movieId,
             {
                 params:new HttpParams().set('api_key',this.apiKey).set('language','en-US')
             }

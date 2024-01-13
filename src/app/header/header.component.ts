@@ -14,7 +14,7 @@ export class HeaderComponent  {
   isAuthenticated=false;
   private userSubscription:Subscription;
 
-  title=environment.title;
+
 
 
   constructor(private authService:AuthService){}

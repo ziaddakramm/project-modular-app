@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject, catchError, tap, throwError } from "rxjs";
 import { User } from "./user.model";
@@ -30,7 +30,7 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) { }
     signUp(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBvOQI0Uexokqm8JdBVBOf6VEwdPM7C6ek',
+            environment.fireBaseSignUpUrl,
             {
                 email: email,
                 password: password,
@@ -52,7 +52,7 @@ export class AuthService {
     }
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBvOQI0Uexokqm8JdBVBOf6VEwdPM7C6ek'
+            environment.fireBaseLogInUrl
             ,
             {
                 email: email,
