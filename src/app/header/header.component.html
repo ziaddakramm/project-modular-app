@@ -1,43 +1,27 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
-        <a  
-            
-            class="navbar-brand nav-link"
-            i18n="@@TitleText"
-            >
+        <a class="navbar-brand nav-link" i18n="@@TitleText">
             {{title}}
         </a>
 
-        <button class="navbar-toggler" 
-        type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" 
-                        routerLink="/auth"
-                        routerLinkActive="active"
-                        style="cursor: pointer;"
-                        *ngIf="true"
-                        i18n="@@catalogText">Catalog</a>
-                    </li>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/auth" routerLinkActive="active"
+                        *ngIf="true" i18n="@@catalogText">Catalog</a>
+                </li>
 
-                    <li class="nav-item me-auto">  
-                        <a 
-                         class="nav-link " 
-                        style="cursor: pointer;"
-                        *ngIf="isAuthenticated"
-                        (click)="onLogout()"
+                <li class="nav-item me-auto">
+                    <a class="nav-link" *ngIf="isAuthenticated" (click)="onLogout()"
                         i18n="@@LogoutText">Logout</a>
-                    </li>
-                </ul>   
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
