@@ -1,7 +1,7 @@
 <div class="row" *ngIf="isLoading">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="d-flex justify-content-center align-items-center">
-      <app-loading-spinner></app-loading-spinner>
+      <mat-spinner class="material-spinner" *ngIf="isLoading" ></mat-spinner>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center">
-        <app-loading-spinner class="spinner"*ngIf="isLoading" ></app-loading-spinner>
+        <mat-spinner class="material-spinner" *ngIf="isLoading" ></mat-spinner>
         </div>
         <form
          #authForm="ngForm"
@@ -15,7 +15,7 @@
          *ngIf="!isLoading"
          > 
             <div class="form-group">
-                <label for="email">E-mail</label>
+                <label for="email"  i18n="@@EmailText">E-mail</label>
                 <input
                  type="email"
                 id="email" 
@@ -28,11 +28,11 @@
                 >
             </div>
             <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
-            <p class="invalidEmailText">Invalid email format</p>
+            <p class="invalidEmailText" i18n="@@InvalidEmailText">Invalid email format</p>
             </div>
            
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password" i18n="@@PasswordText">Password</label>
                 <input 
                 type="password"
                 id="password" 
@@ -45,10 +45,14 @@
             </div>
 
             <div>
-                <button class="btn btn-dark" [disabled]="!authForm.valid" type="submit">{{isLoginMode ?"Log in" :"Sign up"}}</button>
+                <button class="btn btn-dark" [disabled]="!authForm.valid" type="submit" i18n="@@LoginSignupText">{{isLoginMode ?'Log in' :'Sign up'}}</button>
                 | 
-                <button class="btn btn-dark" (click)="onSwitchMode()" type="button">Switch to    {{isLoginMode ?"Sign Up" :"Log in"}} </button>
+                <button class="btn btn-dark" (click)="onSwitchMode()" type="button" i18n="@@AuthSwitchText">Switch to{{isLoginMode ?"Sign Up" :"Log in"}} </button>
             </div>
         </form>
     </div>
 </div>
+
+
+
+

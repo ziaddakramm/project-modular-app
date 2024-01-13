@@ -27,7 +27,7 @@ export class MoviesStorageService {
         return this.http.get<Movie[]>(
             environment.tmdbMoviesApiUrl,
             {
-                params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex)
+                params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex).set('language','en-US')
             }
         ).pipe(
 
@@ -45,9 +45,9 @@ export class MoviesStorageService {
 
     getMovieDetail(movieId:number) {
         return this.http.get<Movie>(
-            `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+            `https://api.themoviedb.org/3/movie/${movieId}`,
             {
-                params:new HttpParams().set('api_key',this.apiKey)
+                params:new HttpParams().set('api_key',this.apiKey).set('language','en-US')
             }
         ).pipe(
             map((response: any) => 

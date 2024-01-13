@@ -9,11 +9,9 @@ export class AuthGuard implements  CanActivate{
 
 constructor(private authService:AuthService,private router:Router){}
 
-
 canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
 : boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> 
 {
-
     return this.authService.user.pipe(
         take(1),
         map(user =>{
@@ -22,12 +20,10 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
        
        if(route.routeConfig.path=='auth'&& isAuth)
        {
-
         return this.router.createUrlTree(['/catalog']);
        }
        else if(route.routeConfig.path=='auth'&& !isAuth)
        {
-
         return true;
        }
        if(isAuth)
@@ -36,7 +32,5 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
        }
        return this.router.createUrlTree(['/auth']);
     }));
-}
-
-
+    }
 }

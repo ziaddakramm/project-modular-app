@@ -33,7 +33,8 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
       (params: Params) => {
         this.invalidMovieId
         this.movieId = +params['id'];
-        this.movieSubscription = this.moviesStorageService.getMovieDetail(this.movieId).subscribe({
+        this.movieSubscription = this.moviesStorageService.getMovieDetail(this.movieId).subscribe(
+          {
           next: (movie) => {
             this.movie = movie;
             this.isLoading = false;
