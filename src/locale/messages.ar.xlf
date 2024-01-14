@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="en-US" target-language="ar" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="EmailText" datatype="html">
         <source>E-mail</source>
@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="InvalidEmailText" datatype="html">
         <source>Invalid email format</source>
-        <target>صيغة البريد الإلكتروني غير صالحة</target>
+        <target>صيغة البريد الإلكتروني غير صحيحة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">31,33</context>
@@ -27,8 +27,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="LoginSignupText" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{isLoginMode ? 'Log in' : 'Sign up'}}"/></source>
-        <target><x id="INTERPOLATION" equiv-text="{{isLoginMode ? 'تسجيل الدخول' :التسجيل'}}"/></target>
+        <source><x id="INTERPOLATION" equiv-text="{{isLoginMode ?'Log in' :'Sign up'}}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{isLoginMode ?'تسجيل الدخول' :'التسجيل'}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">48,49</context>
@@ -42,28 +42,116 @@
           <context context-type="linenumber">50,51</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="TitleText" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{title}}"/> </source>
-        <target> <x id="INTERPOLATION" equiv-text="{{title}}"/> </target>
+      <trans-unit id="PrevButtonText" datatype="html">
+        <source>previous page</source>
+        <target>الصفحة السابقة</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">8,11</context>
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="NextButtonText" datatype="html">
+        <source>next page</source>
+        <target>الصفحة التالية</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="PageText" datatype="html">
+        <source>page <x id="INTERPOLATION" equiv-text="{{currentPageIndex}}"/>/<x id="INTERPOLATION_1" equiv-text="{{totalNumberOfPages}}"/></source>
+        <target>الصفحة <x id="INTERPOLATION" equiv-text="{{currentPageIndex}}"/>/<x id="INTERPOLATION_1" equiv-text="{{totalNumberOfPages}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MoviePopularityText" datatype="html">
+        <source>Popularity:<x id="INTERPOLATION" equiv-text="{{movie.popularity}}"/></source>
+        <target>الشهرة: <x id="INTERPOLATION" equiv-text="{{movie.popularity}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/movie/movie.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="TitleText" datatype="html">
+        <source> TMDB </source>
+        <target> تي أم دي بي </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="catalogText" datatype="html">
         <source>Catalog</source>
         <target>الكتالوج</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="LogoutText" datatype="html">
         <source>Logout</source>
         <target>تسجيل الخروج</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailOverviewText" datatype="html">
+        <source>Overview:</source>
+        <target>نظرة عامة:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailAdultText" datatype="html">
+        <source>Adult:</source>
+        <target>للبالغين:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailLangText" datatype="html">
+        <source>Original Language:</source>
+        <target>اللغة الأصلية:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailPopText" datatype="html">
+        <source>Popularity:</source>
+        <target>الشهرة:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailDateText" datatype="html">
+        <source>Release Date:</source>
+        <target>تاريخ الإصدار:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailVoteAvgText" datatype="html">
+        <source>Vote Average:</source>
+        <target>متوسط التصويت:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailVoteCountText" datatype="html">
+        <source>Vote Count:</source>
+        <target>عدد التصويت:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
     </body>

@@ -16,15 +16,15 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-body">
-        <h1>Overview:</h1>
+        <h1 i18n="@@DetailOverviewText">Overview:</h1>
         <p class="card-text">{{movie.overview}}</p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Adult:</strong> {{ movie.adult ? 'Yes' : 'No' }}</li>
-          <li class="list-group-item"><strong>Original Language:</strong> {{ movie.original_language }}</li>
-          <li class="list-group-item"><strong>Popularity:</strong> {{ movie.popularity }}</li>
-          <li class="list-group-item"><strong>Release Date:</strong> {{ movie.release_date }}</li>
-          <li class="list-group-item"><strong>Vote Average:</strong> {{ movie.vote_average }}</li>
-          <li class="list-group-item"><strong>Vote Count:</strong> {{ movie.vote_count }}</li>
+          <li class="list-group-item"><strong i18n="@@DetailAdultText">Adult:</strong> {{ movie.adult ? 'Yes' : 'No' }}</li>
+          <li class="list-group-item"><strong i18n="@@DetailLangText">Original Language:</strong> {{ movie.original_language }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailPopText">Popularity:</strong> {{ movie.popularity }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailDateText">Release Date:</strong> {{ movie.release_date }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailVoteAvgText">Vote Average:</strong> {{ movie.vote_average }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailVoteCountText">Vote Count:</strong> {{ movie.vote_count }}</li>
         </ul>
       </div>
     </div>

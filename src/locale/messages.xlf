@@ -24,7 +24,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="LoginSignupText" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{isLoginMode ? 'Log in' : 'Sign up'}}"/></source>
+        <source><x id="INTERPOLATION" equiv-text="{{isLoginMode ?&apos;Log in&apos; :&apos;Sign up&apos;}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">48,49</context>
@@ -37,25 +37,102 @@
           <context context-type="linenumber">50,51</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="TitleText" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{title}}"/> </source>
+      <trans-unit id="PrevButtonText" datatype="html">
+        <source>previous page</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">8,11</context>
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="NextButtonText" datatype="html">
+        <source>next page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="PageText" datatype="html">
+        <source>page <x id="INTERPOLATION" equiv-text="{{currentPageIndex}}"/>/<x id="INTERPOLATION_1" equiv-text="{{totalNumberOfPages}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/catalog.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MoviePopularityText" datatype="html">
+        <source>Popularity:<x id="INTERPOLATION" equiv-text="{{movie.popularity}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/catalog/movie/movie.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="TitleText" datatype="html">
+        <source> TMDB </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="catalogText" datatype="html">
         <source>Catalog</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="LogoutText" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/header/header.component.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="sourcefile">src/app/core/header/header.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailOverviewText" datatype="html">
+        <source>Overview:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailAdultText" datatype="html">
+        <source>Adult:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailLangText" datatype="html">
+        <source>Original Language:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailPopText" datatype="html">
+        <source>Popularity:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailDateText" datatype="html">
+        <source>Release Date:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailVoteAvgText" datatype="html">
+        <source>Vote Average:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DetailVoteCountText" datatype="html">
+        <source>Vote Count:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/movie-detail/movie-detail.component.html</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
     </body>
