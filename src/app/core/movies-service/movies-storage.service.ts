@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Movie } from "../catalog/movie/movie.model";
-import {  map } from "rxjs";
+import {  BehaviorSubject, Subscription, map } from "rxjs";
 import { environment } from "../../../environments/environment";
 
 @Injectable(
@@ -15,6 +15,9 @@ export class MoviesStorageService {
 
     totalPagesNumber:number;
 
+    languageSubject=new BehaviorSubject<string>('en-US')
+
+    movieDetailSubscription:Subscription;
  
 
 
@@ -23,11 +26,11 @@ export class MoviesStorageService {
 
 
 
-    getTopRatedMovies(pageIndex:number) {
+    getTopRatedMovies(pageIndex:number,language:string) {
         return this.http.get<Movie[]>(
             environment.tmdbMoviesApiUrl,
             {
-                params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex).set('language','en-US')
+                params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex).set('language',language)
             }
         ).pipe(
 
@@ -43,11 +46,11 @@ export class MoviesStorageService {
         );
     }
 
-    getMovieDetail(movieId:number) {
+    getMovieDetail(movieId:number,language) {
         return this.http.get<Movie>(
             environment.tmdbMovieDetailUrl+movieId,
             {
-                params:new HttpParams().set('api_key',this.apiKey).set('language','en-US')
+                params:new HttpParams().set('api_key',this.apiKey).set('language',language)
             }
         ).pipe(
             map((response: any) => 
@@ -74,5 +77,6 @@ export class MoviesStorageService {
     }
 
 
+    
 
 }

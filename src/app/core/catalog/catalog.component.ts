@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, exhaustMap, map } from 'rxjs';
 
 
 import { Movie } from './movie/movie.model';
@@ -31,12 +31,20 @@ export class CatalogComponent implements OnInit, OnDestroy {
   }
 
   subscribeToGetMovies() {
-    this.moviesSubscription = this.movieStorageService.getTopRatedMovies(this.currentPageIndex).subscribe((movies) => {
-      this.movies = movies;
-      this.totalNumberOfPages = this.movieStorageService.totalPagesNumber;
-      this.isLoading = false;
-    }
-    );
+
+    this.moviesSubscription=this.movieStorageService.languageSubject.pipe(
+      exhaustMap((language) => {
+        return this.movieStorageService.getTopRatedMovies(this.currentPageIndex,language).pipe(
+          map((movies) => {
+            this.movies = movies;
+            this.totalNumberOfPages = this.movieStorageService.totalPagesNumber;
+            this.isLoading = false;
+          })
+        );
+      })
+    ).subscribe();
+
+
   }
 
   onNextPage() {
