@@ -8,7 +8,7 @@
 <div class="row" *ngIf="!isLoading &&!invalidMovieId">
   <div class="col-md-4 mb-5">
     <img class="img-fluid custom-img-height"
-      [src]=imgBaseUrl+movie.poster_path alt="{{ movie.title }}">
+      [src]=imgBaseUrl+movie.posterPath alt="{{ movie.title }}">
     <h1 class="card-title">{{movie.title}}</h1>
   </div>
 
@@ -20,11 +20,11 @@
         <p class="card-text">{{movie.overview}}</p>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong i18n="@@DetailAdultText">Adult:</strong> {{ movie.adult ? 'Yes' : 'No' }}</li>
-          <li class="list-group-item"><strong i18n="@@DetailLangText">Original Language:</strong> {{ movie.original_language }}</li>
+          <li class="list-group-item"><strong i18n="@@DetailLangText">Original Language:</strong> {{ movie.originalLanguage }}</li>
           <li class="list-group-item" ><strong i18n="@@DetailPopText">Popularity:</strong> {{ movie.popularity }}</li>
-          <li class="list-group-item" ><strong i18n="@@DetailDateText">Release Date:</strong> {{ movie.release_date }}</li>
-          <li class="list-group-item" ><strong i18n="@@DetailVoteAvgText">Vote Average:</strong> {{ movie.vote_average }}</li>
-          <li class="list-group-item" ><strong i18n="@@DetailVoteCountText">Vote Count:</strong> {{ movie.vote_count }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailDateText">Release Date:</strong> {{ movie.releaseDate }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailVoteAvgText">Vote Average:</strong> {{ movie.voteAverage }}</li>
+          <li class="list-group-item" ><strong i18n="@@DetailVoteCountText">Vote Count:</strong> {{ movie.voteCount }}</li>
         </ul>
       </div>
     </div>

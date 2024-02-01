@@ -7,14 +7,12 @@ import { environment } from "../../environments/environment";
 
 
 
+
+
 export interface AuthResponseData {
-    idToken: string;
+    access_token: string;
     email: string;
-    refreshToken: string;
-    expiresIn: string;
-    localId: string;
-    kind: string;
-    registered?: boolean;
+    expiration: string;
 }
 
 
@@ -26,15 +24,17 @@ export class AuthService {
 
     user = new BehaviorSubject<User>(null);
 
+    private token:string;
+
+ 
 
     constructor(private http: HttpClient, private router: Router) { }
     signUp(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            environment.fireBaseSignUpUrl,
+            "http://localhost:8080/api/auth/register",
             {
                 email: email,
                 password: password,
-                returnSecureToken: true
             }
         ).pipe(
 
@@ -43,21 +43,23 @@ export class AuthService {
                 resData => {
                     this.handleAuthentication(
                         resData.email,
-                        resData.localId,
-                        resData.idToken,
-                        resData.expiresIn)
+                        null,
+                        resData.access_token,
+                        resData.expiration
+                        );
+                        this.token=resData.access_token;
                 }
+
             )
         );
     }
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            environment.fireBaseLogInUrl
+            "http://localhost:8080/api/auth/authenticate"
             ,
             {
                 email: email,
                 password: password,
-                returnSecureToken: true
             }
 
         ).pipe(
@@ -66,19 +68,21 @@ export class AuthService {
                 resData => {
                     this.handleAuthentication(
                         resData.email,
-                        resData.localId,
-                        resData.idToken,
-                        resData.expiresIn)
+                        null,
+                        resData.access_token,
+                        resData.expiration);
+
+                    this.token=resData.access_token;
                 }
             ));
     }
-    private handleError(errorRes: HttpErrorResponse) {
+    private handleError(errorRes) {
 
         let errorMessage: string = 'An unknown error occurred';
-
+        errorMessage=errorRes["error"]['message'];
 
         if (!errorRes.error || !errorRes.error.error) {
-
+            
             return throwError(() => errorMessage)
         }
         switch (errorRes.error.error.message) {
@@ -97,8 +101,8 @@ export class AuthService {
 
 
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: string) {
-        const expDate = new Date(new Date().getTime() + +expiresIn * 10000);
-
+        const expDate = new Date(new Date().getTime() + +expiresIn );
+        console.log(expDate);
         const user = new User(
             email,
             userId,
@@ -109,10 +113,11 @@ export class AuthService {
         this.user.next(user)
 
 
-        this.autoLogout(+expiresIn * 1000);
+        this.autoLogout(+expiresIn );
 
 
         localStorage.setItem('userData', JSON.stringify(user));
+        console.log(localStorage.getItem('userData'));
     }
 
     autoLogin() {
@@ -171,4 +176,11 @@ export class AuthService {
 
 
     }
+
+
+    public getToken()
+    {
+        return this.token;
+    }
+
 }

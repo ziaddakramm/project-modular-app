@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { Movie } from "../catalog/movie/movie.model";
 import {  BehaviorSubject, Subscription, map } from "rxjs";
 import { environment } from "../../../environments/environment";
+import { AuthService } from "../../auth/auth-service";
 
 @Injectable(
     { providedIn: 'root' }
 )
 export class MoviesStorageService {
-
 
     apiKey=environment.tmdbApiKey;
 
@@ -21,56 +21,69 @@ export class MoviesStorageService {
  
 
 
+
     constructor(
-        private http: HttpClient) { }
+        private http: HttpClient,private authService:AuthService) { }
 
 
 
     getTopRatedMovies(pageIndex:number,language:string) {
+        
         return this.http.get<Movie[]>(
-            environment.tmdbMoviesApiUrl,
+            'http://localhost:8081/tmdb/movies',
+            // environment.tmdbMoviesApiUrl,
             {
-                params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex).set('language',language)
-            }
+                headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem('userData'))._token}`},
+                // params:new HttpParams().set('api_key',this.apiKey).set('page',pageIndex).set('language',language)
+                params:new HttpParams().set('page',pageIndex-1)
+            },
         ).pipe(
 
             map((response: any) => 
             {
 
-                
-                this.totalPagesNumber=response['total_pages'];
+          
+                this.totalPagesNumber=response['totalPages'];
+                response.content as Movie[]
+                console.log(response.content[0])
+                return response.content;
 
-                response.results as Movie[]
-                return response.results;
+                // this.totalPagesNumber=response['total_pages'];
+                // response.results as Movie[]
+                // console.log(response.results)
+                // return response.results;
             }),
         );
     }
 
     getMovieDetail(movieId:number,language) {
         return this.http.get<Movie>(
-            environment.tmdbMovieDetailUrl+movieId,
+            // environment.tmdbMovieDetailUrl+movieId,
+            'http://localhost:8081/tmdb/movies/'+movieId,
             {
-                params:new HttpParams().set('api_key',this.apiKey).set('language',language)
+                headers:{Authorization:`Bearer ${JSON.parse(localStorage.getItem('userData'))._token}`},
+                // params:new HttpParams().set('api_key',this.apiKey).set('language',language)
             }
         ).pipe(
             map((response: any) => 
             {
                 let receivedMovie = new Movie(
                     response.adult,
-                    response.backdrop_path,
-                    response.genre_ids,
+                    response.backdropPath,
+                    null,
                     response.id,
-                    response.original_language,
-                    response.original_title,
+                    response.originalLanguage,
+                    response.originalTitle,
                     response.overview,
                     response.popularity,
-                    response.poster_path,
-                    response.release_date,
+                    response.posterPath,
+                    response.releaseDate,
                     response.title,
                     response.video,
-                    response.vote_average,
-                    response.vote_count
+                    response.voteAverage,
+                    response.voteCount
                 )
+                console.log(receivedMovie)
                 return receivedMovie;
             }),
         );

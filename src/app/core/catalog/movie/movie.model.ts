@@ -3,21 +3,19 @@ export class Movie{
 
     constructor(
         public adult: boolean,
-        public backdrop_path: string | null,
-        public genre_ids: number[],
+        public backdropPath: string | null,
+        public genre_ids: number[]|null,
         public id: number,
-        public original_language: string,
-        public original_title: string,
+        public originalLanguage: string,
+        public originalTitle: string,
         public overview: string,
         public popularity: number,
-        public poster_path: string | null,
-        public release_date: string,
+        public posterPath: string | null,
+        public releaseDate: string,
         public title: string,
         public video: boolean,
-        public vote_average: number,
-        public vote_count: number
+        public voteAverage: number,
+        public voteCount: number
       ) {}
-
-
-
+      
 }
