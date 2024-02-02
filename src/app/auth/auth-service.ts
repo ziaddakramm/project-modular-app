@@ -31,7 +31,8 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) { }
     signUp(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            "http://localhost:8080/api/auth/register",
+            // "http://localhost:8080/api/auth/register",
+            environment.fireBaseSignUpUrl,
             {
                 email: email,
                 password: password,
@@ -55,8 +56,8 @@ export class AuthService {
     }
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            "http://localhost:8080/api/auth/authenticate"
-            ,
+            // "http://localhost:8080/api/auth/authenticate",
+            environment.fireBaseLogInUrl,
             {
                 email: email,
                 password: password,
@@ -102,7 +103,7 @@ export class AuthService {
 
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: string) {
         const expDate = new Date(new Date().getTime() + +expiresIn );
-        console.log(expDate);
+
         const user = new User(
             email,
             userId,
@@ -117,7 +118,7 @@ export class AuthService {
 
 
         localStorage.setItem('userData', JSON.stringify(user));
-        console.log(localStorage.getItem('userData'));
+
     }
 
     autoLogin() {
